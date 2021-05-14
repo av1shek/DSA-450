@@ -5,7 +5,6 @@ class Solution
     struct Node* reverseList(struct Node *head)
      {
         if(head == NULL) return head;
-        
         Node *h1 = head, *h2 = head->next;
         h1->next = NULL;
         if(h2 == NULL) return h1;
@@ -24,3 +23,21 @@ class Solution
     
 };
     
+/* ----------- recursive --------------*/
+class Solution
+{
+    public:
+    //Function to reverse a linked list.
+    struct Node* reverseList(struct Node *head)
+     {
+        if(head == NULL) return head;
+        if(head->next == NULL) return head;
+        
+        Node *temp = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return temp; 
+        
+    }
+    
+};
