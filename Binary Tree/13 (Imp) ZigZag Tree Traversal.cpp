@@ -28,9 +28,7 @@ vector <int> zigZagTraversal(Node* root)
 	        {
 	            if(curr->right) q.push_front(curr->right);
 	            if(curr->left ) q.push_front(curr->left);
-	            
 	        }
-	        
 	    }
 	    cnt++;
 	}
