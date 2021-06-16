@@ -1,3 +1,18 @@
+// DP best
+long long int count( int a[], int m, int n )
+{   
+    vector<long long> dp(n+1);
+    dp[0]=1;
+    for (int i=0;i<m;i++)
+    {
+        for (int j=1;j<=n;j++)
+        {
+            if (j-a[i]>=0)
+            dp[j]+=dp[j-a[i]];
+        }
+    }
+    return dp[n];
+}
 // recursive  - TLE
 void solve(int s[], int m, int n, int &ans)
 {
