@@ -1,0 +1,1 @@
+// same as kadane algo, instead of maximum here minimum
