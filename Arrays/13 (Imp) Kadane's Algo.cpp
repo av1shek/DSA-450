@@ -1,17 +1,11 @@
-class Solution {
-public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        sort(intervals.begin(), intervals.end());
-        vector<vector<int>> ans;
-        ans.push_back(intervals[0]);
-        
-        for(int i=1;i<intervals.size();i++)
-        {
-            if(ans.back()[1] >= intervals[i][0])
-                ans[ans.size()-1][1] =max(ans[ans.size()-1][1],  intervals[i][1] );
-            else
-                ans.push_back(intervals[i]);
-        }
-        return ans;
+int maxSubarraySum(int arr[], int n)
+{
+    int ans = 0, sum = 0;
+    for(int i=0;i<n;i++)
+    {
+        sum += arr[i];
+        if(sum < 0) sum = 0;
+        ans = max(ans, sum);
     }
-};
+    return ans;
+}
