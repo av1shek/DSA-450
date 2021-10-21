@@ -1,0 +1,32 @@
+class Solution{
+    
+      public:
+      
+      bool solve(int a[], int n, int k, vector<int> &vis, int target, int sum, int pos)
+      {
+          if(k==0) return true;
+          if(pos == n)
+          {
+              if(sum == target)
+                    return solve(a, n, k-1, vis, target, 0, 0);
+              return false;
+          }
+          
+          if(vis[pos])
+                return solve(a, n, k, vis, target, sum, pos+1);
+                
+          bool x = solve(a, n, k, vis, target, sum, pos+1);
+          vis[pos] = true;
+          bool y = solve(a, n, k, vis, target, sum+a[pos], pos+1);
+          vis[pos] = false;
+          return x||y;
+      }
+    bool isKPartitionPossible(int a[], int n, int k)
+    {
+        int sum = 0;
+        for(int i=0;i<n;i++) sum += a[i];
+        if(sum%k) return false;
+        vector<int> vis(n, false);
+        return solve(a, n, k, vis, sum/k, 0, 0);
+    }
+};
